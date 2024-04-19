@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Form = () => {
   const [name, setName] = useState("");
@@ -6,42 +7,61 @@ const Form = () => {
   const [dob, setDob] = useState("");
   const [adultSocks, setAdultSocks] = useState("Choose");
   const [kidsSocks, setKidsSocks] = useState("Choose");
-  const [gender, setGender] = useState();
+  const [time, setTime] = useState();
   const [paymentMethod, setPaymentMethod] = useState();
   const [transactionId, setTransactionId] = useState("");
 
+  const calculateCost = (kidsSocks, adultSocks, time) => {
+    console.log(`KIDS: ${kidsSocks}`);
+    console.log(`Adult: ${adultSocks}`);
+    let totalSocksPrice = (parseInt(kidsSocks) + parseInt(adultSocks)) * 50;
+    console.log(totalSocksPrice);
+    if (parseInt(time) == 30) {
+      return totalSocksPrice + 200;
+    } else {
+      return totalSocksPrice + 400;
+    }
+  };
   const collectData = async (e) => {
     e.preventDefault();
+    // let finalDob = new Date(dob);
+    const currentTime = new Date();
     const enterTime = new Date().toTimeString().split(" ")[0];
-    // let newDob = `${dob.getFullYear()}-${dob.getMonth() + 1}-${dob.getDate()}`;
-    console.log(currTime);
-    // let result = await fetch("http://localhost:5000/", {
-    //   method: "post",
-    //   body: JSON.stringify({
-    //     name,
-    //     number,
-    //     dob,
-    //     gender,
-    //     adultSocks,
-    //     kidsSocks,
-    //     paymentMethod,
-    //     transactionId,
-    //   }),
-    //   headers: {
-    //     "Content-type": "application/json",
-    //   },
-    // });
-    // result = await result.json;
-    // localStorage.setItem("user", JSON.stringify(result));
-    // alert("Data Submitted Successfully");
-    // setName("");
-    // setNumber("");
-    // setDob("");
-    // setAdultSocks("Choose");
-    // setKidsSocks("Choose");
-    // setGender("");
-    // setPaymentMethod("");
-    // setTransactionId("");
+    const exitTime = new Date(currentTime.getTime() + time * 60000)
+      .toTimeString()
+      .split(" ")[0];
+
+    const totalCost = calculateCost(kidsSocks, adultSocks, time);
+    let result = await fetch("http://localhost:5000/", {
+      method: "post",
+      body: JSON.stringify({
+        name,
+        number,
+        dob,
+        time,
+        adultSocks,
+        kidsSocks,
+        paymentMethod,
+        transactionId,
+        enterTime,
+        exitTime,
+        totalCost,
+      }),
+      headers: {
+        "Content-type": "application/json",
+      },
+    });
+    result = await result.json;
+    localStorage.setItem("user", JSON.stringify(result));
+    alert(`TotalCost: ${totalCost}`);
+    setName("");
+    setNumber("");
+    setDob("");
+    setAdultSocks("Choose");
+    setKidsSocks("Choose");
+    setTime();
+    setPaymentMethod("");
+    setTransactionId("");
     // console.log(
     //   JSON.stringify({
     //     name,
@@ -50,7 +70,6 @@ const Form = () => {
     //     adultSocks,
     //     kidsSocks,
     //     paymentMethod,
-    //     gender,
     //   })
     // );
   };
@@ -58,7 +77,7 @@ const Form = () => {
   return (
     <div className="max-w-md mx-auto mt-10 bg-white shadow-lg rounded-lg overflow-hidden">
       <div className="text-2xl py-4 px-6 bg-gray-900 text-white text-center font-bold uppercase">
-        Tanwani's Fun KidZone
+        <Link to="/">Tanwani's Fun KidZone</Link>
       </div>
       <form className="p-6" onSubmit={collectData}>
         <div className="mb-4">
@@ -118,7 +137,7 @@ const Form = () => {
 
         <div className="mb-4">
           <label className="block text-gray-700 font-bold mb-2" htmlFor="date">
-            Gender
+            Time (in mins)
           </label>
           <div className="main flex border rounded-full overflow-hidden select-none w-fit m-auto">
             {/* <div className="title py-3 my-auto px-5 bg-blue-500 text-white text-sm font-semibold mr-3">
@@ -128,24 +147,24 @@ const Form = () => {
               <input
                 className="my-auto transform scale-125"
                 type="radio"
-                name="gender"
-                value="male"
-                checked={gender === "male"}
-                onChange={(e) => setGender(e.target.value)}
+                name="time"
+                value={30}
+                checked={time == 30}
+                onChange={(e) => setTime(e.target.value)}
               />
-              <div className="title px-2">male</div>
+              <div className="title px-2">30</div>
             </label>
 
             <label className="flex radio p-2 cursor-pointer">
               <input
                 className="my-auto transform scale-125"
                 type="radio"
-                name="gender"
-                value="female"
-                checked={gender === "female"}
-                onChange={(e) => setGender(e.target.value)}
+                name="time"
+                value={60}
+                checked={time == 60}
+                onChange={(e) => setTime(e.target.value)}
               />
-              <div className="title px-2">female</div>
+              <div className="title px-2">60</div>
             </label>
           </div>
         </div>

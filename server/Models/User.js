@@ -6,8 +6,11 @@ const userSchema = new mongoose.Schema({
   startTime: Date,
   adultSocks: Number,
   kidsSocks: Number,
-  gender: String,
+  time: Number,
   paymentMethod: String,
   transactionId: String,
+  enterTime: String,
+  exitTime: String,
+  totalCost: Number,
 });
 module.exports = mongoose.model("users", userSchema);
