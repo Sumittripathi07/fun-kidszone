@@ -3,13 +3,13 @@
   src: url(./fonts/digital-7.ttf) format("truetype");
 }
 
-body {
+/* body {
   background: #e4e4e4;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-}
+} */
 
 .clock {
   margin: 10px;

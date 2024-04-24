@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Number } from "./Number";
 import { Word } from "./Word";
-// import "./Clock.css";s
+import "./Clock.css";
 
 const days = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
 

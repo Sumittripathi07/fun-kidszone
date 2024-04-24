@@ -36,7 +36,7 @@ const AllKids = () => {
             </tr>
           </thead>
           <tbody>
-            {kidsData.map((item, index) => {
+            {kidsData?.map((item, index) => {
               return (
                 <tr key={index} className="bg-white dark:bg-gray-800">
                   <th
