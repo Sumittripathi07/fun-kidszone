@@ -13,6 +13,10 @@ app.post("/", async (req, res) => {
   let result = await user.save();
   res.send(result);
 });
+app.get("/allKids", async (req, res) => {
+  let result = await Users.find();
+  res.send(result);
+});
 
 app.listen(5000, () => {
   console.log("Server is running on port 5000");
