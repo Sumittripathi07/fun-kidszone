@@ -14,7 +14,10 @@ app.post("/", async (req, res) => {
   res.send(result);
 });
 app.get("/allKids", async (req, res) => {
-  let result = await Users.find();
+  let d = new Date();
+  let currDate = `${d.getDate()}/${d.getMonth()}/${d.getFullYear()}`;
+
+  let result = await Users.find({ currDate: currDate });
   res.send(result);
 });
 

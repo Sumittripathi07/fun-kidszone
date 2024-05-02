@@ -12,10 +12,7 @@ const Form = () => {
   const [transactionId, setTransactionId] = useState("");
 
   const calculateCost = (kidsSocks, adultSocks, time) => {
-    console.log(`KIDS: ${kidsSocks}`);
-    console.log(`Adult: ${adultSocks}`);
     let totalSocksPrice = (parseInt(kidsSocks) + parseInt(adultSocks)) * 50;
-    console.log(totalSocksPrice);
     if (parseInt(time) == 30) {
       return totalSocksPrice + 200;
     } else {
@@ -25,9 +22,12 @@ const Form = () => {
   const collectData = async (e) => {
     e.preventDefault();
     // let finalDob = new Date(dob);
-    const currentTime = new Date();
+
+    const d = new Date();
+    let currDate = `${d.getDate()}/${d.getMonth()}/${d.getFullYear()}`;
+
     const enterTime = new Date().toTimeString().split(" ")[0];
-    const exitTime = new Date(currentTime.getTime() + time * 60000)
+    const exitTime = new Date(d.getTime() + time * 60000)
       .toTimeString()
       .split(" ")[0];
 
@@ -46,6 +46,7 @@ const Form = () => {
         enterTime,
         exitTime,
         totalCost,
+        currDate,
       }),
       headers: {
         "Content-type": "application/json",

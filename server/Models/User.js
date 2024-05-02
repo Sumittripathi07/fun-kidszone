@@ -12,5 +12,6 @@ const userSchema = new mongoose.Schema({
   enterTime: String,
   exitTime: String,
   totalCost: Number,
+  currDate: String,
 });
 module.exports = mongoose.model("users", userSchema);
