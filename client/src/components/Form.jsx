@@ -12,11 +12,11 @@ const Form = () => {
   const [transactionId, setTransactionId] = useState("");
 
   const calculateCost = (kidsSocks, adultSocks, time) => {
-    let totalSocksPrice = (parseInt(kidsSocks) + parseInt(adultSocks)) * 50;
+    let totalSocksPrice = (parseInt(kidsSocks) + parseInt(adultSocks)) * 30;
     if (parseInt(time) == 30) {
       return totalSocksPrice + 200;
     } else {
-      return totalSocksPrice + 400;
+      return totalSocksPrice + 250;
     }
   };
   const collectData = async (e) => {
@@ -76,7 +76,7 @@ const Form = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-10 bg-white shadow-lg rounded-lg overflow-hidden">
+    <div className="max-w-lg mx-auto mt-10 bg-white shadow-lg rounded-lg overflow-hidden">
       <div className="text-2xl py-4 px-6 bg-gray-900 text-white text-center font-bold uppercase">
         <Link to="/">Tanwani's Fun KidZone</Link>
       </div>
