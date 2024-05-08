@@ -47,7 +47,7 @@ const AllKids = () => {
                   key={index}
                   className={`bg-${
                     currTime > item.exitTime ? "red" : "green"
-                  }-200 dark:bg-gray-800`}
+                  }-200  dark:bg-gray-800`}
                 >
                   <th
                     scope="row"
