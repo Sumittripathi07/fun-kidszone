@@ -20,7 +20,7 @@ Install dependencies
 
 ```bash
   npm install
-  npm install-all
+  npm run install-all
 ```
 
 Start the server
