@@ -11,8 +11,11 @@ const Home = () => {
         <button className="bg-gray-900 text-white py-2 px-4 rounded hover:bg-gray-800 focus:outline-none focus:shadow-outline m-5">
           <Link to={"/form"}>Form</Link>
         </button>
-        <button className="bg-gray-900 text-white py-2 px-4 rounded hover:bg-gray-800 focus:outline-none focus:shadow-outline">
+        <button className="bg-gray-900 text-white py-2 px-4 rounded hover:bg-gray-800 focus:outline-none focus:shadow-outline m-5">
           <Link to={"/allKids"}>All Kids</Link>
+        </button>
+        <button className="bg-gray-900 text-white py-2 px-4 rounded hover:bg-gray-800 focus:outline-none focus:shadow-outline m-5">
+          <Link to={"/admin"}>Admin</Link>
         </button>
       </div>
     </>

@@ -21,6 +21,29 @@ app.get("/allKids", async (req, res) => {
   res.send(result);
 });
 
+app.get("/adminKids", async (req, res) => {
+  let result = await Users.find();
+  let totalAmount = await Users.aggregate([
+    { $group: { _id: null, sum_val: { $sum: "$valueField" } } },
+  ]);
+
+  let cashAmount = await Users.aggregate([
+    { $match: { paymentMethod: "cash" } },
+    { $group: { _id: null, total: { $sum: "$totalCost" } } },
+  ]);
+  let upiAmount = await Users.aggregate([
+    { $match: { paymentMethod: "upi" } },
+    { $group: { _id: null, total: { $sum: "$totalCost" } } },
+  ]);
+
+  res.send({
+    result: result,
+    totalAmount: totalAmount,
+    cashAmount: cashAmount,
+    upiAmount: upiAmount,
+  });
+});
+
 app.listen(5000, () => {
   console.log("Server is running on port 5000");
 });

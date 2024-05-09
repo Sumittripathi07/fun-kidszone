@@ -3,6 +3,7 @@ const userSchema = new mongoose.Schema({
   name: String,
   number: Number,
   dob: Date,
+  age: Number,
   startTime: Date,
   adultSocks: Number,
   kidsSocks: Number,
