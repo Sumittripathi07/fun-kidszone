@@ -14,4 +14,4 @@ const userSchema = new mongoose.Schema({
   totalCost: Number,
   currDate: String,
 });
-module.exports = mongoose.model("users", userSchema);
+module.exports = mongoose.model("kids_master", userSchema);
