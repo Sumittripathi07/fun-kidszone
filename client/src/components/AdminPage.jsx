@@ -4,18 +4,17 @@ import axios from "axios";
 
 const AdminPage = () => {
   const [kidsData, setKidsData] = useState([]);
-  const [totalAmount, setTotalAmount] = useState();
-  const [totalCashAmount, setTotalCashAmount] = useState();
-  const [totalUpiAmount, setTotalUpiAmount] = useState();
+  const [totalAmount, setTotalAmount] = useState(0);
+  const [totalCashAmount, setTotalCashAmount] = useState(0);
+  const [totalUpiAmount, setTotalUpiAmount] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios("http://localhost:5000/adminKids");
       //   console.log(result);
       setKidsData(result.data.result);
-      setTotalAmount(result.data.totalAmount);
+      setTotalAmount(result.data.totalAmount[0].total);
       setTotalCashAmount(result.data.cashAmount[0].total);
-
       setTotalUpiAmount(result.data.upiAmount[0].total);
     };
 
@@ -120,7 +119,7 @@ const AdminPage = () => {
           </div>
         </div>
         <div className="...">
-          cash: {totalCashAmount} <br /> UPI : {totalUpiAmount}
+          cash: {totalCashAmount} <br /> UPI : {totalUpiAmount} <br /> Total Amout: {totalAmount}
         </div>
       </div>
     </div>

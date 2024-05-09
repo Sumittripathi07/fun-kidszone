@@ -24,7 +24,7 @@ app.get("/allKids", async (req, res) => {
 app.get("/adminKids", async (req, res) => {
   let result = await Users.find();
   let totalAmount = await Users.aggregate([
-    { $group: { _id: null, sum_val: { $sum: "$valueField" } } },
+    { $group: { _id: null, total: { $sum: "$totalCost" } } },
   ]);
 
   let cashAmount = await Users.aggregate([
