@@ -60,15 +60,17 @@ const AllKids = () => {
                 >
                   <th
                     scope="row"
-                    className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
+                    className="px-6 py-4 font-black text-gray-900 dark:text-white text-2xl"
                   >
                     {item.name}
                   </th>
-                  <td className="px-6 font-black text-gray-900  py-4">
+                  <td className="px-6 font-black text-gray-900  py-4 text-2xl">
                     {item.number}
                   </td>
-                  <td className="px-6 text-gray-900  py-4">{item.enterTime}</td>
-                  <td className="px-6 text-gray-900 font-black py-4">
+                  <td className="px-6 text-gray-900  py-4 text-2xl">
+                    {item.enterTime}
+                  </td>
+                  <td className="px-6 text-gray-900 font-black py-4 text-2xl">
                     {" "}
                     {item.exitTime}{" "}
                   </td>
