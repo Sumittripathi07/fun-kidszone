@@ -43,21 +43,35 @@ const AllKids = () => {
           <tbody>
             {kidsData?.map((item, index) => {
               return (
+                // <tr
+                //   key={index}
+                //   className={`bg-${
+                //     currTime > item.exitTime ? "red" : "green"
+                //   }-200  dark:bg-gray-800`}
+                // >
                 <tr
+                  style={{
+                    backgroundColor: `${
+                      currTime > item.exitTime ? "indianred" : "lightgreen"
+                    }`,
+                  }}
                   key={index}
-                  className={`bg-${
-                    currTime > item.exitTime ? "red" : "green"
-                  }-200  dark:bg-gray-800`}
+                  className={` dark:bg-gray-800`}
                 >
                   <th
                     scope="row"
-                    className="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"
+                    className="px-6 py-4 text-gray-900 whitespace-nowrap dark:text-white"
                   >
                     {item.name}
                   </th>
-                  <td className="px-6 font-black  py-4">{item.number}</td>
-                  <td className="px-6  py-4">{item.enterTime}</td>
-                  <td className="px-6 font-black py-4"> {item.exitTime} </td>
+                  <td className="px-6 font-black text-gray-900  py-4">
+                    {item.number}
+                  </td>
+                  <td className="px-6 text-gray-900  py-4">{item.enterTime}</td>
+                  <td className="px-6 text-gray-900 font-black py-4">
+                    {" "}
+                    {item.exitTime}{" "}
+                  </td>
                 </tr>
               );
             })}
