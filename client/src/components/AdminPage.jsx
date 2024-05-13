@@ -118,8 +118,21 @@ const AdminPage = () => {
             </div>
           </div>
         </div>
-        <div className="...">
-          cash: {totalCashAmount} <br /> UPI : {totalUpiAmount} <br /> Total Amout: {totalAmount}
+        <div className="">
+        <div class="bg-gray-50 rounded-xl p-6 w-[80%] m-auto mb-8 max-lg:max-w-xl max-lg:mx-auto">
+                <div class="flex items-center justify-between w-full mb-6">
+                    <p class="font-normal text-xl leading-8 text-gray-400">Cash</p>
+                    <h6 class="font-semibold text-xl leading-8 text-gray-900">{totalCashAmount}</h6>
+                </div>
+                <div class="flex items-center justify-between w-full pb-6 border-b border-gray-200">
+                    <p class="font-normal text-xl leading-8 text-gray-400">UPI</p>
+                    <h6 class="font-semibold text-xl leading-8 text-gray-900">{totalUpiAmount} </h6>
+                </div>
+                <div class="flex items-center justify-between w-full py-6">
+                    <p class="font-manrope font-medium text-2xl leading-9 text-gray-900">Total</p>
+                    <h6 class="font-manrope font-medium text-2xl leading-9 text-indigo-500">₹{totalAmount}</h6>
+                </div>
+            </div>
         </div>
       </div>
     </div>
