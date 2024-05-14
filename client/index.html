@@ -4,10 +4,41 @@
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + React</title>
+    <title>Tanwani's Fun Kidzone</title>
+    <style type="text/css">
+      #backgroundImage{z-index: 1;}
+
+.backgroundImage:before {
+   content: "";
+   position: absolute;
+   z-index: -1;
+   top: 0;
+   bottom: 0;
+   left: 0;
+   right: 0;
+   background-image: url("./public/bg.jpg");
+   /* background-image: url(http://static.tumblr.com/25bac3efec28a6f14a446f7c5f46b685/hywphoq/ufoniwv6n/tumblr_static_ldhkrazuoqo4g0s0sk8s4s4s.jpg); */
+    background-repeat: repeat;
+    background-size: 100%;
+    opacity: 0.4;
+    filter:alpha(opacity=40);
+    height:107%;
+    width:100%;
+ }
+
+/* .main{
+   height:320px;
+   width:320px;
+   margin:auto;
+   background-color:green;
+   z-index:-1;
+   opacity: 1;
+   filter:alpha(opacity=100);
+} */
+  </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root" class="backgroundImage"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

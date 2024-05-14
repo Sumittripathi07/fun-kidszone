@@ -27,7 +27,7 @@ const Form = () => {
     const d = new Date();
     let currDate = `${d.getDate()}/${d.getMonth()}/${d.getFullYear()}`;
 
-    let age = d.getFullYear() - parseInt(dob.split("-")[0]) - 1;
+    let age = d.getFullYear() - parseInt(dob.split("-")[0]);
 
     const enterTime = new Date().toTimeString().split(" ")[0];
     const exitTime = new Date(d.getTime() + time * 60000)
