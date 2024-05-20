@@ -13,6 +13,24 @@ app.post("/", async (req, res) => {
   let result = await user.save();
   res.send(result);
 });
+
+
+app.post("/updateKid", async (req, res) => {
+  const {id, name,number,adultSocks,kidsSocks,totalCost} = req.body
+  let result = await Users.updateOne({_id:id},{
+    $set:{
+      name:name,
+      number:number,
+      adultSocks:adultSocks,
+      kidsSocks:kidsSocks,
+      totalCost:totalCost
+    }
+ } );
+  res.send(result);
+});
+
+
+
 app.get("/allKids", async (req, res) => {
   let d = new Date();
   let currDate = `${d.getDate()}/${d.getMonth()}/${d.getFullYear()}`;

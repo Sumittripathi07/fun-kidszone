@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
+import editBtn from "/edit.svg";
 
 const AdminPage = () => {
+const navigate = useNavigate()
+
   const [kidsData, setKidsData] = useState([]);
   const [totalAmount, setTotalAmount] = useState(0);
   const [totalCashAmount, setTotalCashAmount] = useState(0);
@@ -33,7 +36,7 @@ const AdminPage = () => {
                 <thead className="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
                   <tr className="">
                     <th scope="col" className="px-6 py-3 ">
-                      Kid name 
+                      Kid name
                     </th>
                     <th scope="col" className="px-6 py-3">
                       Contact
@@ -75,9 +78,12 @@ const AdminPage = () => {
                       >
                         <th
                           scope="row"
-                          className="px-6 py-4 font-black text-gray-900 dark:text-white"
+                          className="px-6 py-4  dark:text-white flex"
                         >
-                          {item.name}
+                          <img className="w-4 mr-3 cursor-pointer" src={editBtn} alt="" onClick={()=>navigate("/updateKid",{state: item})} />
+                          <span className="font-black text-gray-900">
+                            {item.name}
+                          </span>
                         </th>
                         <td className="px-6 font-black text-gray-900  py-4">
                           {item.number}
@@ -119,20 +125,28 @@ const AdminPage = () => {
           </div>
         </div>
         <div className="">
-        <div class="bg-gray-50 rounded-xl p-6 w-[80%] m-auto mb-8 max-lg:max-w-xl max-lg:mx-auto">
-                <div class="flex items-center justify-between w-full mb-6">
-                    <p class="font-normal text-xl leading-8 text-gray-400">Cash</p>
-                    <h6 class="font-semibold text-xl leading-8 text-gray-900">{totalCashAmount}</h6>
-                </div>
-                <div class="flex items-center justify-between w-full pb-6 border-b border-gray-200">
-                    <p class="font-normal text-xl leading-8 text-gray-400">UPI</p>
-                    <h6 class="font-semibold text-xl leading-8 text-gray-900">{totalUpiAmount} </h6>
-                </div>
-                <div class="flex items-center justify-between w-full py-6">
-                    <p class="font-manrope font-medium text-2xl leading-9 text-gray-900">Total</p>
-                    <h6 class="font-manrope font-medium text-2xl leading-9 text-indigo-500">₹{totalAmount}</h6>
-                </div>
+          <div className="bg-gray-50 rounded-xl p-6 w-[80%] m-auto mb-8 max-lg:max-w-xl max-lg:mx-auto">
+            <div className="flex items-center justify-between w-full mb-6">
+              <p className="font-normal text-xl leading-8 text-gray-400">Cash</p>
+              <h6 className="font-semibold text-xl leading-8 text-gray-900">
+              ₹{totalCashAmount}
+              </h6>
             </div>
+            <div className="flex items-center justify-between w-full pb-6 border-b border-gray-200">
+              <p className="font-normal text-xl leading-8 text-gray-400">UPI</p>
+              <h6 className="font-semibold text-xl leading-8 text-gray-900">
+              ₹{totalUpiAmount}{" "}
+              </h6>
+            </div>
+            <div className="flex items-center justify-between w-full py-6">
+              <p className="font-manrope font-medium text-2xl leading-9 text-gray-900">
+                Total
+              </p>
+              <h6 className="font-manrope font-medium text-2xl leading-9 text-indigo-500">
+                ₹{totalAmount}
+              </h6>
+            </div>
+          </div>
         </div>
       </div>
     </div>
