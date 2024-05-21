@@ -16,14 +16,17 @@ app.post("/", async (req, res) => {
 
 
 app.post("/updateKid", async (req, res) => {
-  const {id, name,number,adultSocks,kidsSocks,totalCost} = req.body
+  const {id, name,number,time,adultSocks,kidsSocks,paymentMethod,transactionId,totalCost} = req.body
   let result = await Users.updateOne({_id:id},{
     $set:{
       name:name,
       number:number,
+      time:time,
       adultSocks:adultSocks,
       kidsSocks:kidsSocks,
-      totalCost:totalCost
+      paymentMethod:paymentMethod,
+      transactionId:transactionId,
+      totalCost:totalCost,
     }
  } );
   res.send(result);

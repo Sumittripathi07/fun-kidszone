@@ -11,6 +11,9 @@ useEffect(()=>{
   setAdultSocks(location.state.adultSocks)
   setKidsSocks(location.state.kidsSocks)
   setId(location.state._id)
+  setTime(location.state.time)
+  setPaymentMethod(location.state.paymentMethod)
+  location.state.paymentMethod=="upi"?setTransactionId(location.state.transactionId):""
 },[])
 
   const [id,setId]=useState()
@@ -44,7 +47,7 @@ useEffect(()=>{
     // const exitTime = new Date(d.getTime() + time * 60000)
     //   .toTimeString()
     //   .split(" ")[0];
-
+    paymentMethod=="cash"?setTransactionId(""):""
     const totalCost = calculateCost(kidsSocks, adultSocks, time);
     let result = await fetch("http://localhost:5000/updateKid/", {
       method: "post",
@@ -54,11 +57,11 @@ useEffect(()=>{
         number,
         // dob,
         // age,
-        // time,
+        time,
         adultSocks,
         kidsSocks,
-        // paymentMethod,
-        // transactionId,
+        paymentMethod,
+        transactionId,
         // enterTime,
         // exitTime,
         totalCost,
@@ -154,7 +157,7 @@ useEffect(()=>{
           />
         </div> */}
 
-        {/* <div className="mb-4">
+        <div className="mb-4">
           <label className="block text-gray-700 font-bold mb-2" htmlFor="date">
             Time (in mins)
           </label>
@@ -184,7 +187,7 @@ useEffect(()=>{
               <div className="title px-2">60</div>
             </label>
           </div>
-        </div> */}
+        </div>
 
   
         <div className="mb-4">
@@ -236,7 +239,7 @@ useEffect(()=>{
         </div>
 
 
-        {/* <div className="mb-4">
+        <div className="mb-4">
           <label className="block text-gray-700 font-bold mb-2" htmlFor="date">
             Payment Option
           </label>
@@ -265,9 +268,9 @@ useEffect(()=>{
               <div className="title px-2">Cash</div>
             </label>
           </div>
-        </div> */}
+        </div>
 
-        {/* {paymentMethod == "upi" ? (
+        {paymentMethod == "upi" ? (
           <div className="mb-4">
             <label
               className="block text-gray-700 font-bold mb-2"
@@ -286,7 +289,7 @@ useEffect(()=>{
           </div>
         ) : (
           ""
-        )} */}
+        )}
         <div className="flex items-center justify-center mb-4">
 
           <button
