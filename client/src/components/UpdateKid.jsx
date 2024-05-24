@@ -47,7 +47,8 @@ useEffect(()=>{
     // const exitTime = new Date(d.getTime() + time * 60000)
     //   .toTimeString()
     //   .split(" ")[0];
-    paymentMethod=="cash"?setTransactionId(""):""
+
+    paymentMethod=="cash"?setTransactionId(""):"";
     const totalCost = calculateCost(kidsSocks, adultSocks, time);
     let result = await fetch("http://localhost:5000/updateKid/", {
       method: "post",
