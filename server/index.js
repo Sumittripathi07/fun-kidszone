@@ -33,7 +33,6 @@ app.post("/updateKid", async (req, res) => {
 });
 
 
-
 app.get("/allKids", async (req, res) => {
   let d = new Date();
   let currDate = `${d.getDate()}/${d.getMonth()}/${d.getFullYear()}`;
