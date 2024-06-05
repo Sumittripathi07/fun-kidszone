@@ -82,16 +82,7 @@ useEffect(()=>{
     setTime();
     setPaymentMethod("");
     setTransactionId("");
-    // console.log(
-    //   JSON.stringify({
-    //     name,
-    //     number,
-    //     dob,
-    //     adultSocks,
-    //     kidsSocks,
-    //     paymentMethod,
-    //   })
-    // );
+
 
     navigate('/admin')
   };
