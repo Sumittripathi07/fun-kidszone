@@ -14,7 +14,6 @@ app.post("/", async (req, res) => {
   res.send(result);
 });
 
-
 app.post("/updateKid", async (req, res) => {
   const {id, name,number,time,adultSocks,kidsSocks,paymentMethod,transactionId,totalCost} = req.body
   let result = await Users.updateOne({_id:id},{
