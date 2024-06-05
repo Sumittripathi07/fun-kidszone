@@ -17,7 +17,6 @@ useEffect(()=>{
 },[])
 
   const [id,setId]=useState()
-
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
   const [dob, setDob] = useState("");
