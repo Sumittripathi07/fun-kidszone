@@ -36,6 +36,9 @@ const navigate = useNavigate()
                 <thead className="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
                   <tr className="">
                     <th scope="col" className="px-6 py-3 ">
+                      Date
+                    </th>
+                    <th scope="col" className="px-6 py-3 ">
                       Kid name
                     </th>
                     <th scope="col" className="px-6 py-3">
@@ -78,13 +81,22 @@ const navigate = useNavigate()
                       >
                         <th
                           scope="row"
-                          className="px-6 py-4  dark:text-white flex"
+                          className="px-2 py-4  dark:text-white flex"
                         >
                           <img className="w-4 mr-3 cursor-pointer" src={editBtn} alt="" onClick={()=>navigate("/updateKid",{state: item})} />
                           <span className="font-black text-gray-900">
-                            {item.name}
+                            {item.currDate}
                           </span>
                         </th>
+                        <td
+                          scope="row"
+                          className="px-6 font-black text-gray-900  py-4"
+                        >
+                          {/* <img className="w-4 mr-3 cursor-pointer" src={editBtn} alt="" onClick={()=>navigate("/updateKid",{state: item})} /> */}
+                          <span className="font-black text-gray-900">
+                            {item.name}
+                          </span>
+                        </td>
                         <td className="px-6 font-black text-gray-900  py-4">
                           {item.number}
                         </td>
@@ -105,7 +117,7 @@ const navigate = useNavigate()
                         </td>
                         <td className="px-6 text-gray-900 font-black py-4">
                           {" "}
-                          {item.totalCost}{" "}
+                          ₹{item.totalCost}{" "}
                         </td>
                       </tr>
                     );
